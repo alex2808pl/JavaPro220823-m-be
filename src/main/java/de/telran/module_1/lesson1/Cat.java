@@ -35,7 +35,10 @@ public class Cat {
     }
 
     public Cat(int age) {
-        this.age = age;
+        if(age > 0) {
+            this.age = age;
+        }
+        else System.out.println("Ошибочный параметр");
     }
 
     public Cat(String name, int weight, int age) {
