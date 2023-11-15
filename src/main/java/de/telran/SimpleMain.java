@@ -7,5 +7,6 @@ public class SimpleMain {
         System.out.println("Hello world!");
         Cat cat = new Cat();
 
+
     }
 }
