@@ -4,7 +4,7 @@ public abstract class Animal {
     protected String type;
     protected abstract void voice();
     protected abstract void run();
-    protected void rest() {
+    final protected void rest() {
         System.out.println("Они спят");
     }
 }

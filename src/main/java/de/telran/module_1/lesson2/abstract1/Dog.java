@@ -10,5 +10,6 @@ public class Dog extends Animal {
 
     @Override
     protected void run() {
+        System.out.println("Бегает четырьмя ногами :)");
     }
 }
