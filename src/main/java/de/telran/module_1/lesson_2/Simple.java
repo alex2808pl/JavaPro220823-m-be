@@ -1,4 +1,4 @@
-package de.telran.module_1.lesson2;
+package de.telran.module_1.lesson_2;
 
 public class Simple {
     public static void main(String[] args) {
