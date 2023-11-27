@@ -1,6 +1,6 @@
 package de.telran;
 
-import de.telran.module_1.lesson1.Cat;
+import de.telran.module_1.lesson_1.Cat;
 
 public class SimpleMain {
     public static void main(String[] args) {

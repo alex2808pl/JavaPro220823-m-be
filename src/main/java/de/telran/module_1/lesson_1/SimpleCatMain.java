@@ -1,4 +1,4 @@
-package de.telran.module_1.lesson1;
+package de.telran.module_1.lesson_1;
 
 public class SimpleCatMain {
     public static void main(String[] args) {
