@@ -2,7 +2,7 @@ package de.telran.module_2.lesson_4_5;
 
 import java.util.Objects;
 
-public class Cat {
+public class Cat implements Comparable<Cat>{
     private String name;
     private int age;
     private String breed;
@@ -60,5 +60,21 @@ public class Cat {
                 ", age=" + age +
                 ", breed='" + breed + '\'' +
                 '}';
+    }
+
+    @Override
+    public int compareTo(Cat o) {
+        if(this.age < o.age) // основное сравнение по name
+            return -1;
+        else if(this.age > o.age)
+            return 1;
+        else {
+            int res = this.name.compareTo(o.name); // вложенное сравнение по name
+            if(res == 0) {
+                return this.breed.compareTo(o.breed); //// вложенное сравнение по breed
+            }
+            else
+                return res;
+        }
     }
 }
