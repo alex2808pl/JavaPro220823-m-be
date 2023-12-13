@@ -1,0 +1,4 @@
+В приложении BinaryTree, которое начали реализовывать в класссе, 
+в классе Util реализовать методы для поиска информации по алгоритмам 
+BFS - Breadth First Search и DFS - depth first search.
+  
