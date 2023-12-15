@@ -16,8 +16,10 @@ public class SimpleTree {
 
         Node root = binaryTree.getRoot();
 
-//        Util.breadthFirstSearch(root, 3);
-
+       Util.breadthFirstSearch(root, 2);
+        System.out.println();
+       Util.breadthFirst(root);
+        System.out.println();
        Util.depthInorder(root);
         System.out.println();
        Util.depthInorderStack(root);

@@ -10,7 +10,7 @@ import java.util.Queue;
 import java.util.Stack;
 
 class Util {
-    public static void breadthFirstSearch(Node node, int key) {
+    public static Node breadthFirstSearch(Node node, int key) {
         Queue<Node> queue = new LinkedList<>();
         queue.add(node);
 
@@ -18,7 +18,28 @@ class Util {
             Node tempNode = queue.poll();
             System.out.print(tempNode.getValue() + " ");
             if(tempNode.getKey() == key)
-                return; // мы нашли этот ключ
+                return tempNode; // мы нашли этот ключ
+
+            /*Enqueue left child */
+            if (tempNode.getLeft() != null) {
+                queue.add(tempNode.getLeft());
+            }
+
+            /*Enqueue right child */
+            if (tempNode.getRight() != null) {
+                queue.add(tempNode.getRight());
+            }
+        }
+        return null;
+    }
+
+    public static void breadthFirst(Node node) {
+        Queue<Node> queue = new LinkedList<>();
+        queue.add(node);
+
+        while (!queue.isEmpty()) {
+            Node tempNode = queue.poll();
+            System.out.print(tempNode.getValue() + " ");
 
             /*Enqueue left child */
             if (tempNode.getLeft() != null) {
@@ -31,6 +52,7 @@ class Util {
             }
         }
     }
+
 
     public static void depthPostorder(Node node) {
         if (node == null)
