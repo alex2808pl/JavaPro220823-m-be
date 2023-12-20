@@ -2,6 +2,7 @@ package de.telran.module_3.lesson_2;
 
 import de.telran.module_1.lesson_2.abstract1.Dog;
 
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Objects;

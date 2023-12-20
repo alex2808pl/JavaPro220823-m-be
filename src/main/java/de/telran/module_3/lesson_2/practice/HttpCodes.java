@@ -1,5 +1,7 @@
 package de.telran.module_3.lesson_2.practice;
 
+import java.util.function.BiConsumer;
+
 public enum HttpCodes {
     INFORMATIONAL(100,199,
             ((code, codes) -> System.out.println(code + " принадлежит INFORMATIONAL группе в перечислении HttpCodes."+codes))), //100-199
@@ -14,26 +16,36 @@ public enum HttpCodes {
 
     int minCode;
     int maxCode;
-    Action valAction;
+//    Action valAction;
+    BiConsumer<Integer, HttpCodes> valAction;
 
-    HttpCodes(int minCode, int maxCode, Action action) {
+//
+//    HttpCodes(int minCode, int maxCode, Action action) {
+//        this.minCode = minCode;
+//        this.maxCode = maxCode;
+//        this.valAction = action;
+//    }
+    HttpCodes(int minCode, int maxCode,  BiConsumer<Integer, HttpCodes>  action) {
         this.minCode = minCode;
         this.maxCode = maxCode;
         this.valAction = action;
     }
 
+
+
     public static void findValueByCode(int code) {
         for (HttpCodes v: HttpCodes.values()) {
             if(code >=v.minCode && code<=v.maxCode) {
-                v.doRunAction(code, v);
+                v.valAction.accept(code, v);
+//                v.doRunAction(code, v);
 //                v.valAction.action(code, v);
                 break;
             }
         }
     }
 
-    public void doRunAction(int code, HttpCodes v) {
-        if(valAction != null)
-            valAction.action(code, v);
-    }
+//    public void doRunAction(int code, HttpCodes v) {
+//        if(valAction != null)
+//            valAction.action(code, v);
+//    }
 }

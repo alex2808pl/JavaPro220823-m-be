@@ -7,6 +7,8 @@ public class SimpleHTTPStatus {
         HttpCodes.findValueByCode(303);
         HttpCodes.findValueByCode(404);
         HttpCodes.findValueByCode(505);
+
+
     }
 }
 
