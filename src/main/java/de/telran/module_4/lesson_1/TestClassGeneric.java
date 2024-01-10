@@ -68,4 +68,9 @@ class Test2<T,U> {
         return obj2;
     }
 
+    U getObj2(T t) {
+        return (U)t;
+    }
+
+
 }

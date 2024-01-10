@@ -11,11 +11,11 @@ public class TestWildcards {
         List<BMW> list = new ArrayList<>();
         list.add(new BMW());
 
-        List<? extends  Car> garage = list;
-        for (Car car: garage) {
+        List<? extends Car> garage = list;
+        for (Car car : garage) {
             System.out.println(car);
         }
-        //garage.add(new Audi());
+//        garage.add(new Audi());
         print(garage);
 
         System.out.println();
@@ -24,33 +24,28 @@ public class TestWildcards {
         List<Car> listBmw = new ArrayList<>();
         listBmw.add(new BMW());
 
-        List<? super  Car> garage2 = listBmw;
+        List<? super Car> garage2 = listBmw;
 
 //        for (Car car: garage2) {
 //            System.out.println(car);
 //        }
 
-        addNew(listBmw);
+        garage2.add(new Audi());
         print(listBmw);
 
-//        garage.add(new BMW());
+//        List<?> garage3 = list;
+//        garage3.add(new BMW());
+//        for (BMW car: garage3) {
+//            System.out.println(car);
+//        }
     }
 
-    static void print(List<? extends  Car> cars) {
-        for (Car car: cars) {
+    static void print(List<? extends Car> cars) {
+        for (Car car : cars) {
             System.out.println(car);
         }
         //Не могу изменять данные
-      //  cars.add(new BMW());
-    }
-
-    static void addNew(List<? super  Car> cars) {
-        cars.add(new Audi());
-
-        //Не ммогу потребялять данные
-//        for (Car car: cars) {
-//            System.out.println(car);
-//        }
+        //  cars.add(new BMW());
     }
 }
 
