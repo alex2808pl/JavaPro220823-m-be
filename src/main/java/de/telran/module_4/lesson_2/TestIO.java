@@ -1,22 +1,11 @@
 package de.telran.module_4.lesson_2;
 
 import java.io.*;
+import java.util.function.Function;
 
 public class TestIO {
     public static void main(String[] args) throws IOException {
-        File testFile = new File("testFileLastExample.txt");
 
-        FileOutputStream stream = new FileOutputStream(testFile);
-        stream.write("This is my first experience when I myself work with IO API. I can do everything!".getBytes());
-        stream.close();
-
-        boolean isExists = testFile.exists();
-        System.out.println(isExists);
-
-        testFile.delete();
-
-        File parentDir = new File("testOne");
-        removeDirAndSubDir(parentDir);
     }
 
     public static boolean removeDirAndSubDir(File dir) {
@@ -34,5 +23,12 @@ public class TestIO {
         }
         return dir.delete();
 
+
     }
+
+//    public static <U extends Double, T extends Number> U add(T arg1, T arg2) {
+//        return Double.valueOf(arg1.doubleValue() + arg2.doubleValue());
+//    }
+
+
 }
