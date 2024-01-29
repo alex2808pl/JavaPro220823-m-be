@@ -12,7 +12,7 @@ public class SimpleCounter {
 
         for (int i = 0; i < 10; i++) {
             System.out.println("Главный поток  -> " + i);
-            counter.addCounter(10);
+            counter.addCounter(1);
         }
 
         tr1.join();
@@ -36,7 +36,7 @@ class Counter {
     }
 
     public synchronized void addCounter(int counter) {
-        //this.counter += counter;
+//        this.counter += counter;
             System.out.println("Counter = "+this.counter);
             int temp = getCounter();
             setCounter(temp + 10);
@@ -70,8 +70,8 @@ class MyThread1 extends Thread {
 //                int temp = counter.getCounter();
 //                Thread.sleep(1);
 //                counter.setCounter(temp+10);
-                  counter.subCounter(10);
-                  Thread.sleep(10);
+                  counter.addCounter(10);
+                  Thread.sleep(1);
 
             }
             System.out.println("Поток "+numThread+" -> Завершен");

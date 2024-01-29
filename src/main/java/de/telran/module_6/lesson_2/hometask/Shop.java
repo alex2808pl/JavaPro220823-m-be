@@ -8,13 +8,15 @@ public class Shop {
         Consumer consumer = new Consumer(store);
         new Thread(producer).start();
         new Thread(consumer).start();
+        new Thread(consumer).start();
+        new Thread(consumer).start();
     }
 }
 
 // Класс Магазин, хранящий произведенные товары
 class Store{
     private int product=0;
-    public synchronized void get() {
+    public synchronized void get() { // для покупателей
         while (product<1) {
             try {
                 wait();
@@ -23,11 +25,34 @@ class Store{
             }
         }
         product--;
-        System.out.println("Покупатель купил 1 товар");
-        System.out.println("Товаров на складе: " + product);
+        System.out.println(Thread.currentThread().getName()+" - Покупатель купил 1 товар");
+        System.out.println(Thread.currentThread().getName()+" - Товаров на складе: " + product);
         notify();
     }
-    public synchronized void put() {
+
+    public void getBlock() { // для покупателей
+
+        synchronized (this) {
+            while (product<1) {
+                try {
+                    wait();
+                }
+                catch (InterruptedException e) {
+                }
+            }
+            product--;
+            System.out.println(Thread.currentThread().getName()+" - Покупатель купил 1 товар");
+            System.out.println(Thread.currentThread().getName()+" - Товаров на складе: " + product);
+            notify();
+        }
+
+        try {
+            Thread.sleep(100);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    public synchronized void put() { //для поставщика
         while (product>=3) {
             try {
                 wait();
@@ -36,9 +61,27 @@ class Store{
             }
         }
         product++;
+        System.out.println(Thread.currentThread().getName()+" - Производитель добавил 1 товар");
+        System.out.println(Thread.currentThread().getName()+" - Товаров на складе: " + product);
+        notify();
+    }
+
+    public void putBlock() { //для поставщика
+
+        synchronized(this) {
+            while (product>=3) {
+                try {
+                    wait();
+                }
+                catch (InterruptedException e) {
+                }
+            }
+            product++;
+            notify();
+        }
         System.out.println("Производитель добавил 1 товар");
         System.out.println("Товаров на складе: " + product);
-        notify();
+
     }
 }
 // класс Производитель
@@ -50,7 +93,9 @@ class Producer implements Runnable{
     }
     public void run(){
         for (int i = 1; i < 6; i++) {
+//            System.out.println(Thread.currentThread().getName()+" - Производитель добавил 1 товар");
             store.put();
+//            store.putBlock();
         }
     }
 }
@@ -63,7 +108,9 @@ class Consumer implements Runnable{
     }
     public void run(){
         for (int i = 1; i < 6; i++) {
-            store.get();
+//            System.out.println(Thread.currentThread().getName()+" - Покупатель купил 1 товар");
+//            store.get();
+            store.getBlock();
         }
     }
 }
