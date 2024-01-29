@@ -1,4 +1,4 @@
-package de.telran.module_6.lesson3.deadlock;
+package de.telran.module_6.lesson_3.deadlock;
 
 public class SimpleDeadlock {
     public static Object lock1 = new Object();
