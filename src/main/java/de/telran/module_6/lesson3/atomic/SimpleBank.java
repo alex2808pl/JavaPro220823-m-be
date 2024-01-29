@@ -7,6 +7,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class SimpleBank {
     volatile int accountVol;
     public static void main(String[] args) {
+        //synchronized
 //        Account account = new Account();
 //        new Husband(account).start();
 //        new Wife(account).start();
