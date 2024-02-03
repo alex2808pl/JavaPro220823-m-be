@@ -1,0 +1,2 @@
+Проблемы с классом TimeUnit в примере SimpleScheduledThreadPool в 21 версии java.
+Пришлось перейти на java17.
